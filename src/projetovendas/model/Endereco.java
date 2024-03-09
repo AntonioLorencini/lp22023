@@ -5,6 +5,9 @@
 package projetovendas.model;
 
 import projetovendas.interfaces.IOperacao;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -16,9 +19,21 @@ public class Endereco implements IOperacao{
     
     //antonio cristiana isaac 
     private String bairro;
+    
+      private Statement mysqStatement = null;
 
     @Override
     public void cadastrar() {
+        String sql = "insert into endereco(logradouro,bairro,id_cidade) "
+                + "values('"+logradouro+"','"+bairro+"',"+cidade.getId_cidade()+")";
+          mysqStatement = ConexaoDB.getStatement();
+
+        try {
+            mysqStatement.executeUpdate(sql);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
     }
 
     @Override
