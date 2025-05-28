@@ -5,6 +5,7 @@
 package projetovendas.model;
 
 
+
 import java.sql.SQLException;
 import projetovendas.interfaces.IOperacao;
 
